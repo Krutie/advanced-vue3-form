@@ -19,7 +19,7 @@ export function useFormField(props) {
     const formState = inject('formState')
 
     onMounted(() => {
-        console.log('> New Field mounted')
+        console.log('/src/composables/useFormField: New Field mounted')
 
         // record initial error length
         formState.value.errorLength = v$.value.$silentErrors.length
@@ -37,7 +37,7 @@ export function useFormField(props) {
 
 
     watch(v$, (v) => {
-        console.log('Step 3: Watch')
+        console.log('/src/composables/useFormField: Field changes watched')
         /**
          * watch if initial validation changes
          */

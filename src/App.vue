@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-        <!-- <div class="logo"><h1>Advanced Vue 3 Form</h1></div> -->
+        <div class="title">
+            <h1>Advanced Vue 3 Form</h1>
+        </div>
         <FormConfigProvider />
     </div>
 </template>

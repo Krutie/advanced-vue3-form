@@ -1,6 +1,7 @@
 <template>
     <div>
-        <textarea v-model="selectedValue" @input="$emit('update:modelValue', $event.target.value)" />
+        <textarea v-model="selectedValue" :placeholder="$attrs['placeholder']"
+            @input="$emit('update:modelValue', $event.target.value)" />
     </div>
 </template>
 

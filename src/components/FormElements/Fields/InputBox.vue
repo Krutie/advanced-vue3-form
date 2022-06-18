@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input :type="type" v-model="selectedValue" :name="name"
+        <input :type="type" v-model="selectedValue" :name="name" :placeholder="$attrs['placeholder']"
             @input="$emit('update:modelValue', $event.target.value)" />
     </div>
 </template>

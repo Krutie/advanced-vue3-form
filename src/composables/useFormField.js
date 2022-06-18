@@ -16,6 +16,18 @@ export function useFormField(props) {
      * Inject
      */
     const validateField = inject('validateField')
+    const formState = inject('formState')
+
+    onMounted(() => {
+        console.log('> New Field mounted')
+
+        // record initial error length
+        formState.value.errorLength = v$.value.$silentErrors.length
+
+        // use this for upfront field validation
+        // validateField(formState.value.errorLength === 0)
+    })
+
 
     /**
      * when going `Back` to the previous form field
@@ -23,22 +35,14 @@ export function useFormField(props) {
      */
     if (props.modelValue?.length > 0) selectedValue.value = props.modelValue
 
-    onMounted(() => {
-        /**
-         * when going back to the previous form field
-         * trigger validation on load
-         */
-        validateField(!v$.value.$invalid)
-        if (!v$.value.$invalid) {
-            validateField(!v$.value.$invalid)
-        }
-    })
 
     watch(v$, (v) => {
+        console.log('Step 3: Watch')
         /**
          * watch if initial validation changes
          */
-        v.$invalid ? validateField(false) : validateField(true)
+        formState.value.errorLength = v$.value.$silentErrors.length
+        validateField(formState.value.errorLength === 0)
     })
 
     return {

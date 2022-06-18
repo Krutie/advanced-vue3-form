@@ -1,4 +1,4 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import gsap from "gsap"
 
 export function useMyForm(formLength) {
@@ -13,21 +13,21 @@ export function useMyForm(formLength) {
      * **/
     const formState = ref({
         activeField: 0,
-        valid: true,
+        valid: false,
         next: true,
         formLength: formLength,
-        isLast: computed(() => {
+        isLastField: computed(() => {
             return formState.value.activeField === formLength
         }),
-        isFirst: computed(() => {
+        isFirstField: computed(() => {
             return formState.value.activeField < 1
         }),
+        errorLength: 0
     })
 
     /**
      * Returned 
      * **/
-    // function setValid(value) {
     function validateField(value) {
         formState.value.valid = value
     }
@@ -35,9 +35,14 @@ export function useMyForm(formLength) {
     /**
      * Returned 
      * **/
-    function submit() {
-        formState.value.next = true
-        formState.value.valid ? proceed() : decline(".field-area")
+    function onSubmit() {
+        console.log('Field Submitted')
+        if (formState.value.errorLength > 0) {
+            validateField(false)
+        } else {
+            validateField(true)
+            next()
+        }
     }
 
     function back() {
@@ -45,27 +50,12 @@ export function useMyForm(formLength) {
         formState.value.activeField--
     }
 
-    function proceed() {
+    function next() {
         formState.value.next = true
         formState.value.activeField++
     }
 
-    function decline(element) {
-        var tl = gsap.timeline({ repeat: 3 });
-        tl.to(element, {
-            duration: 0.2,
-            // x: 30, 
-            color: "#ef6574",
-        });
-        tl.to(element, {
-            duration: 0.2,
-            // x: 0,
-            color: "#000",
-            ease: "elastic.easeout(0.9, 0.1)",
-        })
-    }
-
     return {
-        formData, formState, validateField, submit, back
+        formData, formState, validateField, onSubmit, back
     }
 }

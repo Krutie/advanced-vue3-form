@@ -1,6 +1,6 @@
 <template>
   <TypeBasedTransition :transitionType="'fadeUpDown'">
-    <div v-if="formState.isLast" class="form-complete">
+    <div v-if="formState.isLastField" class="form-complete">
       <h1>Thank you!</h1>
       <pre> {{ store.formData }} </pre>
     </div>

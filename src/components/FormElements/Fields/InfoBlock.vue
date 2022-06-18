@@ -15,6 +15,7 @@ const props = defineProps(["text"]);
  */
 const validateField = inject('validateField')
 
+// InfoBlock always validates to true
 validateField(true)
 
 </script>

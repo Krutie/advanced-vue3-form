@@ -1,6 +1,6 @@
 <template>
   <div class="form-error-message">
-    <TypeBasedTransition transition-type="fadeUpDown">
+    <TypeBasedTransition transition-type="fadeInOut">
       <!-- This button called 'submit' method defined on form tag on FormTemplate -->
       <button class="form-button" v-if="formState.valid"> {{ buttonText }} </button>
       <span v-else>

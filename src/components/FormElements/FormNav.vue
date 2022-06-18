@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div style="width: 100%; position: fixed;">
     <FormProgress />
     <div class="nav">
-      <div :class="{ 'disabled': formState.isFirst }" class="form-button" @click="$emit('back')">
+      <div :class="{ 'disabled': formState.isFirstField }" class="form-button" @click="$emit('back')">
         <Icon icon="ep:arrow-up-bold" />
       </div>
 
-      <div :class="{ 'disabled': formState.isLast }" class="form-button" @click="$emit('next')">
+      <div :class="{ 'disabled': formState.isLastField }" class="form-button" @click="$emit('next')">
         <Icon icon="ep:arrow-down-bold" />
       </div>
     </div>

@@ -21,7 +21,7 @@ const { selectedValue } = useFormField(props)
 <style>
 label {
     display: block;
-    background: #a5d8d866;
+    background: #b8f4e87a;
     padding: 5px;
     border-radius: 3px;
     margin: 5px 0;

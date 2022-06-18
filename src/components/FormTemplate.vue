@@ -3,14 +3,9 @@
     <template v-for="(field, key) in formFields" :key="`${key}-${field.name}`">
       <FieldGroup :field-id="key">
         <div class="field-area">
-          <field-label :for="`${key}-${field.name}`">
-            <Icon v-if="field.label" icon="bx:arrow-from-left" />
-            <h4>
-              {{ field.label }}
-            </h4>
-          </field-label>
+          <field-label :for="`${key}-${field.name}`" :text="field.label" />
           <Component v-if="field.type === 'information'" :is="field.component" :text="field.text" />
-          <Component v-else v-model="formData[field.name]" :is="field.component" v-bind="{ ...field.options.attrs }"
+          <Component v-else v-model="formData[field.name]" :is="field.component" v-bind="field.options.attrs"
             :name="`${field.name}`" :validation="field.validation" :type="field.type" @change="
               updateField({
                 key: field.name,
@@ -48,7 +43,7 @@ import { Icon } from '@iconify/vue';
 import { useLeadStore } from "../stores/LeadStore";
 
 // Composables
-import { useMyForm } from '../composables/useMyForm';
+import { useForm } from '../composables/useForm';
 
 // Building-block components
 import FieldGroup from "./FormElements/FieldGroup.vue";
@@ -75,7 +70,7 @@ const store = useLeadStore();
 /** 
  * Composables
  */
-const { formData, formState, validateField, onSubmit, back } = useMyForm(props.formFields.length, v.value.$silentErrors.length)
+const { formData, formState, validateField, onSubmit, back } = useForm(props.formFields.length, v.value.$silentErrors.length)
 
 // Provide
 provide('validateField', validateField)

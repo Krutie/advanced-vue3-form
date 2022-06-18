@@ -5,8 +5,21 @@ export const form = [
     "name": "info",
     "text": `We would like to know more about you and your current <strong>situation</strong>.`,
     "buttonText": "Okay, cool!",
+  },
+  {
+    "type": "radio",
+    "label": "Study Option",
+    "name": "studyOption",
+    "buttonText": "What's on?",
+    "options": {
+      "choices": [
+        "Full-time",
+        "Part-time",
+        "Distant"
+      ]
+    },
     "validation": {
-      required: false,
+      required: true,
     }
   },
   {
@@ -25,6 +38,43 @@ export const form = [
       required: true,
       minLength: 2
     }
+  },
+  {
+    "type": "text",
+    "label": "First Name",
+    "name": "firstName",
+    "buttonText": "Next...",
+    "options": {
+      "attrs": {
+        "placeholder": "First Name"
+      }
+    },
+    "validation": {
+      required: true,
+      minLength: 5
+    }
+  },
+  {
+    "type": "text",
+    "label": "Last Name",
+    "name": "lastName",
+    "buttonText": "What do we call you?",
+    "options": {
+      "attrs": {
+        "placeholder": "Last Name"
+      }
+    },
+    "validation": {
+      required: false,
+      minLength: 5
+    }
+  },
+  {
+    "type": "information",
+    "label": "",
+    "name": "info",
+    "text": `Now, tell us how do we get in touch with you.`,
+    "buttonText": "Okay, cool!",
   },
   {
     "type": "text",
@@ -54,52 +104,6 @@ export const form = [
     "validation": {
       required: true,
       numeric: true
-    }
-  },
-  {
-    "type": "radio",
-    "label": "Study Option",
-    "name": "studyOption",
-    "buttonText": "What's on?",
-    "options": {
-      "choices": [
-        "Full-time",
-        "Part-time",
-        "Distant"
-      ]
-    },
-    "validation": {
-      required: true,
-    }
-  },
-  {
-    "type": "text",
-    "label": "Last Name",
-    "name": "lastName",
-    "buttonText": "What do we call you?",
-    "options": {
-      "attrs": {
-        "placeholder": "Last Name"
-      }
-    },
-    "validation": {
-      required: false,
-      minLength: 5
-    }
-  },
-  {
-    "type": "text",
-    "label": "First Name",
-    "name": "firstName",
-    "buttonText": "Next...",
-    "options": {
-      "attrs": {
-        "placeholder": "First Name"
-      }
-    },
-    "validation": {
-      required: true,
-      minLength: 5
     }
   },
   {

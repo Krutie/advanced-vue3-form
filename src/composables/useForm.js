@@ -1,7 +1,7 @@
 import { ref, computed, watch } from 'vue'
 import gsap from "gsap"
 
-export function useMyForm(formLength) {
+export function useForm(formLength) {
 
     /**
      * Returned 
@@ -13,7 +13,7 @@ export function useMyForm(formLength) {
      * **/
     const formState = ref({
         activeField: 0,
-        valid: false,
+        valid: true,
         next: true,
         formLength: formLength,
         isLastField: computed(() => {
@@ -36,10 +36,11 @@ export function useMyForm(formLength) {
      * Returned 
      * **/
     function onSubmit() {
-        console.log('Field Submitted')
         if (formState.value.errorLength > 0) {
+            console.log('/src/composables/useForm: Field Submitted with error')
             validateField(false)
         } else {
+            console.log('/src/composables/useForm: Field Submitted')
             validateField(true)
             next()
         }

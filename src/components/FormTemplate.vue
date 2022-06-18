@@ -1,10 +1,13 @@
 <template>
-  <form class="form-template" @submit.prevent="submit">
+  <form class="form-template" @submit.prevent="onSubmit">
     <template v-for="(field, key) in formFields" :key="`${key}-${field.name}`">
       <FieldGroup :field-id="key">
         <div class="field-area">
           <field-label :for="`${key}-${field.name}`">
-            <h4> {{ field.label }} </h4>
+            <Icon v-if="field.label" icon="bx:arrow-from-left" />
+            <h4>
+              {{ field.label }}
+            </h4>
           </field-label>
           <Component v-if="field.type === 'information'" :is="field.component" :text="field.text" />
           <Component v-else v-model="formData[field.name]" :is="field.component" v-bind="{ ...field.options.attrs }"
@@ -15,8 +18,8 @@
               })
             " :options="!!field.options.choices ? field.options.choices : false" />
           <FieldError :buttonText="field.buttonText">
-            <div class="input-errors" v-for="error of v.$errors" :key="error.$uid">
-              <div class="error-msg">
+            <div v-if="!formState.valid">
+              <div class="input-errors error-msg" v-for="error of v.$silentErrors" :key="error.$uid">
                 <Icon icon="ep:warning-filled" />
                 {{ error.$message }}
               </div>
@@ -27,7 +30,7 @@
     </template>
 
     <!-- Next and Back Nav -->
-    <form-nav @back="back" @next="submit" />
+    <form-nav @back="back" @next="onSubmit" />
 
     <!-- Form Results -->
     <FormResult />
@@ -72,7 +75,7 @@ const store = useLeadStore();
 /** 
  * Composables
  */
-const { formData, formState, validateField, submit, back } = useMyForm(props.formFields.length)
+const { formData, formState, validateField, onSubmit, back } = useMyForm(props.formFields.length, v.value.$silentErrors.length)
 
 // Provide
 provide('validateField', validateField)

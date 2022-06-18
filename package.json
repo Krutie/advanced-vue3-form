@@ -5,6 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
+    "deploy": "rm -rf dist && vite build && cd dist && surge ./ --domain https://advanced-vue3-form.surge.sh/",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {

@@ -1,7 +1,11 @@
 <template>
   <form class="form-template" @submit.prevent="onSubmit">
     <template v-for="(field, key) in formFields" :key="key">
-      <FieldGroup :field-id="key">
+      <FieldGroup
+        :field-id="key"
+        :activeField="formState.activeField"
+        :next="formState.next"
+      >
         <div class="field-area">
           <FieldLabel
             :props="{
@@ -48,10 +52,15 @@
     </template>
 
     <!-- Next and Back Nav -->
-    <FormNav @back="back" @next="onSubmit" />
+    <FormNav
+      :isLastField="formState.isLastField"
+      :isFirstField="formState.isFirstField"
+      @back="back"
+      @next="onSubmit"
+    />
 
     <!-- Form Results -->
-    <FormResult />
+    <FormResult :isLastField="formState.isLastField" />
   </form>
 </template>
 

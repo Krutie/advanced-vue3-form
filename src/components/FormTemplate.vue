@@ -48,7 +48,7 @@
     </template>
 
     <!-- Next and Back Nav -->
-    <form-nav @back="back" @next="onSubmit" />
+    <FormNav @back="back" @next="onSubmit" />
 
     <!-- Form Results -->
     <FormResult />

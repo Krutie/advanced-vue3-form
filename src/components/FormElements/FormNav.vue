@@ -4,7 +4,7 @@
     <div class="nav">
       <button
         type="button"
-        :class="{ disabled: formState.isFirstField }"
+        :class="{ disabled: isFirstField }"
         class="form-button"
         @click="$emit('back')"
         @keyup.page-up="$emit('back')"
@@ -14,7 +14,7 @@
 
       <button
         type="button"
-        :class="{ disabled: formState.isLastField }"
+        :class="{ disabled: isLastField }"
         class="form-button"
         @click="$emit('next')"
         @keyup.page-down="$emit('next')"
@@ -25,13 +25,19 @@
   </div>
 </template>
 <script setup>
-import { inject } from "vue";
 import FormProgress from "./FormProgress.vue";
 import { Icon } from "@iconify/vue";
 
 defineEmits(["back", "next"]);
-/**
- * Inject
- */
-const formState = inject("formState");
+
+defineProps({
+  isFirstField: {
+    type: Boolean,
+    default: true,
+  },
+  isLastField: {
+    type: Boolean,
+    default: false,
+  },
+});
 </script>

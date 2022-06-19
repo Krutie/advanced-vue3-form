@@ -1,5 +1,5 @@
 <template>
-  <DataDrivenTransition :isNext="formState.next">
+  <DataDrivenTransition :isNext="next">
     <div v-if="active" :key="fieldId" class="field-group">
       <slot />
     </div>
@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { computed, inject } from "vue";
+import { computed } from "vue";
 
 import DataDrivenTransition from "../Transitions/DataDrivenTransition";
 
@@ -19,17 +19,20 @@ const props = defineProps({
     type: Number,
     default: null,
   },
+  activeField: {
+    type: Number,
+    default: null,
+  },
+  next: {
+    type: Boolean,
+    default: true,
+  },
 });
-
-/**
- * Inject formState from parent component: FormTemplate.vue
- */
-const formState = inject("formState");
 
 /**
  * computed properties
  */
 const active = computed(() => {
-  return formState.value.activeField === props.fieldId;
+  return props.activeField === props.fieldId;
 });
 </script>

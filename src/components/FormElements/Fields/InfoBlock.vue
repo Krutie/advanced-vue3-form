@@ -5,20 +5,18 @@
 </template>
 
 <script setup>
-import { inject } from "vue";
+import { useFormField } from "../../../composables/useFormField";
 
-defineProps({
+const props = defineProps({
   text: {
     type: String,
     default: "",
   },
+  validation: {
+    type: Object,
+    default: null,
+  },
 });
 
-/**
- * Inject
- */
-const validateField = inject("validateField");
-
-// InfoBlock always validates to true
-validateField(true);
+useFormField(props);
 </script>

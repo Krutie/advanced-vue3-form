@@ -22,10 +22,6 @@ const props = defineProps({
     type: String,
     default: "textarea",
   },
-  options: {
-    type: Array,
-    default: () => [],
-  },
   name: {
     type: String,
     default: null,

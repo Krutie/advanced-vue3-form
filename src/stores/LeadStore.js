@@ -1,8 +1,8 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
 export const useLeadStore = defineStore({
-  id: 'lead',
+  id: "lead",
   state: () => ({
     formData: {},
-  })
-})
+  }),
+});

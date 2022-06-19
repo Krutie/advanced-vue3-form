@@ -1,21 +1,24 @@
 <template>
-    <div class="info-block">
-        <span v-html="text"> </span>
-    </div>
+  <div class="info-block">
+    <span v-html="text" />
+  </div>
 </template>
 
 <script setup>
+import { inject } from "vue";
 
-import { inject } from 'vue';
-
-const props = defineProps(["text"]);
+defineProps({
+  text: {
+    type: String,
+    default: "",
+  },
+});
 
 /**
  * Inject
  */
-const validateField = inject('validateField')
+const validateField = inject("validateField");
 
 // InfoBlock always validates to true
-validateField(true)
-
+validateField(true);
 </script>

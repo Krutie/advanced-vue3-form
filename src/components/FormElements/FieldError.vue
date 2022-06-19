@@ -1,8 +1,14 @@
 <template>
   <div class="form-error-message">
     <TypeBasedTransition transition-type="fadeInOut">
-      <!-- This button called 'submit' method defined on form tag on FormTemplate -->
-      <button class="form-button" v-if="formState.valid"> {{ buttonText }} </button>
+      <button
+        v-if="formState.valid"
+        type="button"
+        class="form-button"
+        @click="$emit('next')"
+      >
+        {{ buttonText }}
+      </button>
       <span v-else>
         <slot />
       </span>
@@ -11,13 +17,21 @@
 </template>
 
 <script setup>
+import { inject } from "vue";
+import { useKeyboardNav } from "../../composables/useKeyboardNav";
 
-import { inject } from 'vue'
+import TypeBasedTransition from "../Transitions/TypeBasedTransition";
 
-import TypeBasedTransition from "../Transitions/TypeBasedTransition"
+defineProps({
+  buttonText: {
+    type: String,
+    default: "Okay",
+  },
+});
 
-defineProps(['buttonText'])
+const formState = inject("formState");
 
-const formState = inject('formState')
-
+// Keyboard navigation - Left and Right arrow
+const emits = defineEmits(["back", "next"]);
+useKeyboardNav(emits, formState);
 </script>

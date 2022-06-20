@@ -33,9 +33,9 @@ export function useValidation(props) {
         : false,
       minLength: props.validation.minLength
         ? helpers.withMessage(
-          validationMessage.value,
-          minLength(props.validation.minLength)
-        )
+            validationMessage.value,
+            minLength(props.validation.minLength)
+          )
         : false,
       email: props.validation.email
         ? helpers.withMessage("Must be a valid email address.", email)

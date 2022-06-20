@@ -14,8 +14,7 @@ export function useFormField(props) {
   /**
    * Inject
    */
-  const validateField = inject("validateField");
-  const formState = inject("formState");
+  const { formState, validateField } = inject("typeform");
 
   onMounted(() => {
     console.log("/src/composables/useFormField: New Field mounted");

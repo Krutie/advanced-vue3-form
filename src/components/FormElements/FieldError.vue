@@ -29,7 +29,7 @@ defineProps({
   },
 });
 
-const formState = inject("formState");
+const { formState } = inject("typeform");
 
 // Keyboard navigation - Left and Right arrow
 const emits = defineEmits(["back", "next"]);

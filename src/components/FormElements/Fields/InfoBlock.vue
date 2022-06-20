@@ -1,6 +1,6 @@
 <template>
   <div class="info-block">
-    <span v-html="text" />
+    <span v-html="props.field.text" />
   </div>
 </template>
 
@@ -8,15 +8,19 @@
 import { useFormField } from "../../../composables/useFormField";
 
 const props = defineProps({
-  text: {
-    type: String,
-    default: "",
-  },
-  validation: {
+  field: {
     type: Object,
     default: null,
   },
+  // text: {
+  //   type: String,
+  //   default: "",
+  // },
+  // validation: {
+  //   type: Object,
+  //   default: null,
+  // },
 });
 
-useFormField(props);
+useFormField(props.field);
 </script>

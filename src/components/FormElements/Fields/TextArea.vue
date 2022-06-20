@@ -14,23 +14,27 @@ import { useFormField } from "../../../composables/useFormField";
 defineEmits(["update:modelValue"]);
 
 const props = defineProps({
+  field: {
+    type: Object,
+    default: null,
+  },
   modelValue: {
     type: String,
     default: null,
   },
-  type: {
-    type: String,
-    default: "textarea",
-  },
-  name: {
-    type: String,
-    default: null,
-  },
-  validation: {
-    type: Object,
-    default: null,
-  },
+  // type: {
+  //   type: String,
+  //   default: "textarea",
+  // },
+  // name: {
+  //   type: String,
+  //   default: null,
+  // },
+  // validation: {
+  //   type: Object,
+  //   default: null,
+  // },
 });
 
-const { selectedValue } = useFormField(props);
+const { selectedValue } = useFormField(props.field);
 </script>

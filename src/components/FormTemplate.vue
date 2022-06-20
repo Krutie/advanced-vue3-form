@@ -6,46 +6,33 @@
         :activeField="formState.activeField"
         :next="formState.next"
       >
-        <div class="field-area">
-          <FieldLabel
-            :props="{
-              key: key,
-              name: field.name,
-              text: field.label,
-              validation: field.validation,
-            }"
-          />
-          <Component
-            :is="field.component"
-            v-model="formData[field.name]"
-            v-bind="field.options.attrs"
-            :name="`${field.name}`"
-            :validation="field.validation"
-            :type="field.type"
-            :text="!!field.text ? field.text : false"
-            :options="!!field.options.choices ? field.options.choices : false"
-            @change="
-              updateField({
-                key: field.name,
-                value: formData[field.name],
-              })
-            "
-          />
-          <FieldError
-            :button-text="field.buttonText"
-            @back="back"
-            @next="onSubmit"
-          >
-            <div
-              v-for="error of v.$silentErrors"
-              :key="error.$uid"
-              class="input-errors error-msg"
-            >
-              <Icon icon="ep:warning-filled" />
-              {{ error.$message }}
-            </div>
-          </FieldError>
-        </div>
+        <FieldLabel
+          :props="{
+            key: key,
+            ...pick(field, ['label', 'name', 'validation']),
+          }"
+        />
+        <Component
+          :is="field.component"
+          v-model="formData[field.name]"
+          v-bind="field.options.attrs"
+          :field="{
+            ...pick(field, ['name', 'validation', 'type', 'text', 'options']),
+          }"
+          @change="
+            updateField({
+              key: field.name,
+              value: formData[field.name],
+            })
+          "
+        />
+        <FieldError
+          :button-text="field.buttonText"
+          :silentErrors="v.$silentErrors"
+          @back="back"
+          @next="onSubmit"
+        >
+        </FieldError>
       </FieldGroup>
     </template>
 
@@ -63,27 +50,21 @@
 </template>
 
 <script setup>
-// Libraries
 import { provide } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-import { Icon } from "@iconify/vue";
-
 // Pinia
 import { useLeadStore } from "../stores/LeadStore";
-
 // Composables
 import { useForm } from "../composables/useForm";
-
 // Building-block components
 import FieldGroup from "./FormElements/FieldGroup.vue";
 import FieldError from "./FormElements/FieldError.vue";
 import FieldLabel from "./FormElements/FieldLabel.vue";
 import FormNav from "./FormElements/FormNav.vue";
 import FormResult from "./FormElements/FormResult.vue";
+import { pick } from "../utilities/";
 
-/**
- * Expected props from parent
- */
+// Expected props from parent
 const props = defineProps({
   formFields: {
     type: Array,
@@ -91,19 +72,10 @@ const props = defineProps({
   },
 });
 
-/**
- * Vuelidate collector instance for showing errors
- */
+// Vuelidate collector instance for showing errors
 const v = useVuelidate({ $stopPropagation: true });
 
-/**
- * Pinia
- */
-const store = useLeadStore();
-
-/**
- * Composables
- */
+// Composables
 const { formData, formState, validateField, onSubmit, back } = useForm(
   props.formFields.length,
   v.value.$silentErrors.length
@@ -115,6 +87,8 @@ provide("typeform", {
   formState,
 });
 
+// Pinia
+const store = useLeadStore();
 const updateField = (payload) => {
   store.$patch((state) => {
     state.formData[payload.key] = payload.value;

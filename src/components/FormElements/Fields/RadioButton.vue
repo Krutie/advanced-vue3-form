@@ -1,10 +1,10 @@
 <template>
   <div>
-    <label v-for="(option, key) in options" :key="key">
+    <label v-for="(option, key) in props.field.options.choices" :key="key">
       <input
         v-model="selectedValue"
-        :type="type"
-        :name="name"
+        :type="props.field.type"
+        :name="props.field.name"
         :value="option"
         @input="$emit('update:modelValue', $event.target.value)"
       />
@@ -19,27 +19,31 @@ import { useFormField } from "../../../composables/useFormField";
 defineEmits(["update:modelValue"]);
 
 const props = defineProps({
+  field: {
+    type: Object,
+    default: null,
+  },
   modelValue: {
     type: String,
     default: null,
   },
-  type: {
-    type: String,
-    default: null,
-  },
-  options: {
-    type: Array,
-    default: () => [],
-  },
-  name: {
-    type: String,
-    default: "",
-  },
-  validation: {
-    type: Object,
-    default: null,
-  },
+  // type: {
+  //   type: String,
+  //   default: null,
+  // },
+  // options: {
+  //   type: Array,
+  //   default: () => [],
+  // },
+  // name: {
+  //   type: String,
+  //   default: "",
+  // },
+  // validation: {
+  //   type: Object,
+  //   default: null,
+  // },
 });
 
-const { selectedValue } = useFormField(props);
+const { selectedValue } = useFormField(props.field);
 </script>

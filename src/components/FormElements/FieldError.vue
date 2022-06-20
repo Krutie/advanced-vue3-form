@@ -10,7 +10,14 @@
         {{ buttonText }}
       </button>
       <span v-else>
-        <slot />
+        <div
+          v-for="error of silentErrors"
+          :key="error.$uid"
+          class="input-errors error-msg"
+        >
+          <Icon icon="ep:warning-filled" />
+          {{ error.$message }}
+        </div>
       </span>
     </TypeBasedTransition>
   </div>
@@ -18,14 +25,21 @@
 
 <script setup>
 import { inject } from "vue";
-import { useKeyboardNav } from "../../composables/useKeyboardNav";
 
+// Components
+import { Icon } from "@iconify/vue";
 import TypeBasedTransition from "../Transitions/TypeBasedTransition";
+
+// Composable
+import { useKeyboardNav } from "../../composables/useKeyboardNav";
 
 defineProps({
   buttonText: {
     type: String,
     default: "Okay",
+  },
+  silentErrors: {
+    type: Array,
   },
 });
 

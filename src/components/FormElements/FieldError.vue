@@ -43,7 +43,7 @@ defineProps({
   },
 });
 
-const { formState } = inject("typeform");
+const { formState } = inject("vueform");
 
 // Keyboard navigation - Left and Right arrow
 const emits = defineEmits(["back", "next"]);

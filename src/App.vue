@@ -3,12 +3,12 @@
     <div class="title">
       <h1>Advanced <span> Vue 3 </span> Form</h1>
     </div>
-    <TypeForm :formConfig="formConfig" />
+    <VueForm :formConfig="formConfig" />
   </div>
 </template>
 
 <script setup>
-import TypeForm from "./components/TypeForm";
+import VueForm from "./components/VueForm";
 import { form as formConfig } from "./config/config";
 </script>
 <style>

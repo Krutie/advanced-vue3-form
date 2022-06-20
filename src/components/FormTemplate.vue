@@ -82,7 +82,7 @@ const { formData, formState, validateField, onSubmit, back } = useForm(
 );
 
 // Provide
-provide("typeform", {
+provide("vueform", {
   validateField,
   formState,
 });

@@ -14,7 +14,7 @@ export function useFormField(props) {
   /**
    * Inject
    */
-  const { formState, validateField } = inject("typeform");
+  const { formState, validateField } = inject("vueform");
 
   onMounted(() => {
     console.log("/src/composables/useFormField: New Field mounted");

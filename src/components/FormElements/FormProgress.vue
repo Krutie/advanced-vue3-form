@@ -8,7 +8,7 @@ import gsap from "gsap";
 /**
  * Inject
  */
-const { formState } = inject("typeform");
+const { formState } = inject("vueform");
 
 /**
  * Computed percent of the form completion

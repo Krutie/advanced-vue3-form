@@ -36,15 +36,13 @@
             @back="back"
             @next="onSubmit"
           >
-            <div v-if="!formState.valid">
-              <div
-                v-for="error of v.$silentErrors"
-                :key="error.$uid"
-                class="input-errors error-msg"
-              >
-                <Icon icon="ep:warning-filled" />
-                {{ error.$message }}
-              </div>
+            <div
+              v-for="error of v.$silentErrors"
+              :key="error.$uid"
+              class="input-errors error-msg"
+            >
+              <Icon icon="ep:warning-filled" />
+              {{ error.$message }}
             </div>
           </FieldError>
         </div>
@@ -112,9 +110,10 @@ const { formData, formState, validateField, onSubmit, back } = useForm(
 );
 
 // Provide
-provide("validateField", validateField);
-provide("formState", formState);
-provide("formData", formData);
+provide("typeform", {
+  validateField,
+  formState,
+});
 
 const updateField = (payload) => {
   store.$patch((state) => {

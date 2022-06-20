@@ -119,13 +119,13 @@ textarea {
 
 @media screen and (max-width: 600px) {
   .field-group {
-    width: 100%;
+    width: 90%;
   }
 }
 
 .field-label {
   display: block;
-  padding-bottom: 20px;
+  padding-bottom: 35px;
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -135,10 +135,6 @@ textarea {
 .field-label svg {
   color: var(--primary);
   font-size: 1.5em;
-}
-
-.field-area {
-  padding: 3em;
 }
 
 .input-errors {
@@ -217,11 +213,14 @@ textarea {
   background: lightgrey;
 }
 
+.form-error-message {
+  margin-top: 50px;
+  position: inherit;
+}
+
 .form-error-message .form-button {
   font-weight: 700;
   padding: 10px 15px;
-  margin-top: 50px;
-  position: inherit;
 }
 
 .info-block {
@@ -249,10 +248,6 @@ textarea {
 
   textarea {
     font-size: 1.2em;
-  }
-
-  .field-area {
-    padding: 2em 1em !important;
   }
 
   .form-complete {

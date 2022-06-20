@@ -20,7 +20,10 @@ This is a revised version of distraction-free-form example that was created back
 ![Project Image](/docs/images/Full-Concept.png)
 
 ## What's new
-The ideas described in distraction-free form article still applies here in this Vue 3 example. However, there are some technical differences that follow new Vue 3 convetions as below: 
+
+The ideas described in **[Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)** article still applies here in this Vue 3 example. 
+
+However, there are some technical differences that follow new Vue 3 convetions as below: 
 
 ### Render functions in Vue 3
 

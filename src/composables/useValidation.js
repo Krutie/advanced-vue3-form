@@ -13,14 +13,14 @@ export function useValidation(props) {
    * props.type
    * props.validation.minLength
    * props.validation.required
-   * props.name
+   * props.label
    */
-
+  console.log(props);
   const validationMessage = computed(() => {
-    if (props.type === "check") {
-      return `Minimum ${props.validation.minLength} ${props.name} required.`;
+    if (props.type === "checkbox") {
+      return `Minimum ${props.validation.minLength} ${props.label} required.`;
     }
-    return `Minimum ${props.validation.minLength} characters required for ${props.name}.`;
+    return `Minimum ${props.validation.minLength} characters required for ${props.label}.`;
   });
   const rules = computed(() => ({
     /**
@@ -29,7 +29,7 @@ export function useValidation(props) {
      */
     selectedValue: {
       required: props.validation.required
-        ? helpers.withMessage(`${props.name} cannot be empty.`, required)
+        ? helpers.withMessage(`${props.label} cannot be empty.`, required)
         : false,
       minLength: props.validation.minLength
         ? helpers.withMessage(

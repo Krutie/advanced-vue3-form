@@ -17,8 +17,6 @@ export function useFormField(props) {
   const { formState, validateField } = inject("vueform");
 
   onMounted(() => {
-    console.log("/src/composables/useFormField: New Field mounted");
-
     // record initial error length
     formState.value.errorLength = v$.value.$silentErrors.length;
 
@@ -33,7 +31,6 @@ export function useFormField(props) {
   if (props.modelValue?.length > 0) selectedValue.value = props.modelValue;
 
   watch(v$, (v) => {
-    console.log("/src/composables/useFormField: Field changes watched");
     /**
      * watch if initial validation changes
      */

@@ -35,10 +35,8 @@ export function useForm(formLength) {
    * **/
   function onSubmit() {
     if (formState.value.errorLength > 0) {
-      console.log("/src/composables/useForm: Field Submitted with error");
       validateField(false);
     } else {
-      console.log("/src/composables/useForm: Field Submitted");
       validateField(true);
       next();
     }

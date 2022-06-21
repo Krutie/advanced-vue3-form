@@ -265,10 +265,10 @@ pre {
 }
 
 .instructions svg {
-  font-size: 1.5em;
   position: relative;
-  top: 4px;
   opacity: 0.85;
+  top: 5px;
+  font-size: 1.3em;
 }
 
 .instructions span {

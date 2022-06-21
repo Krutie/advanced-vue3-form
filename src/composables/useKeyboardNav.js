@@ -1,7 +1,6 @@
 import { onMounted, onBeforeUnmount } from "vue";
 
 export function useKeyboardNav(emits, formState) {
-
   function handleKeyPress(e) {
     if (e.code === "ArrowLeft" && !formState.value.isFirstField) {
       emits("back");

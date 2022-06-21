@@ -17,7 +17,7 @@ This is a revised version of `distraction-free-form` example that was created ba
 
 The ideas described in **[Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)** article still applies here in this Vue 3 example. 
 
-However, there are some technical differences that follow Vue 3 convetions. Diagrams seen in the article above have been updated as well.
+However, there are some technical differences that follow Vue 3 conventions. Diagrams seen in the article above have been updated as well.
 
 ## Reference Links
 
@@ -64,7 +64,6 @@ function MyComponent(props, { slots, emit, attrs }) {
     return () => h(Transition, props, slots)
 }
 ```
-You can also see how Transition component is rendered through render function.
 
 Previously, we rendered `<Transition>` component by adding it as a string, like: `return h("transition", data, context.children)`.
 In Vue 3, we need to import an actual `Transition` component from `vue` and then pass it into render function `h()`.
@@ -108,13 +107,13 @@ As soon as we load the form, we have this 👆 empty store created for us to sto
 
 ## Vuelidate and 3 composables
 
-Unlike previous example, Vuelidate is used for form validation. There are two custom composables, useFormField and useValidation along with useVulidate composable that's provided by Vuelidate - all three of these composables take care of individual field validation before we can move onto the next step in the form.
+Vuelidate is used for form validation. There are two custom composables, `useFormField` and `useValidation` along with `useVulidate` composable that's provided by Vuelidate - all three of these composables take care of individual field validation before we can move onto the next step in the form.
 
 ![Vuelidate and Composables](/docs/images/Form-Template.png)
 
 ## Provide Inject
 
-Reactive provide/inject is used to make sure formState is available in child components that are not in the direct hierarchy.
+Reactive provide/inject is used to make sure `formState` is available in child components that are not in the direct hierarchy.
 
 ```js
 // src/components/FormTemplate.vue
@@ -127,13 +126,19 @@ provide("vueform", {
 
 ## $attrs in Vue 3
 
-Back in Vue 2, $attrs were applied to component by simply using `v-bind="{ ...field.options.attrs }"`
+Back in Vue 2, `$attrs` were applied to component by simply binding them with dynamic component using 
+`v-bind="{ ...field.options.attrs }"`
 
 ```html
-<Component v-model="formData[field.name]" :is="field.component" v-bind="{ ...field.options.attrs }"/>
+<!-- src/components/FormTemplate.vue -->
+<Component 
+    v-model="formData[field.name]" 
+    :is="field.component" 
+    v-bind="{ ...field.options.attrs }"
+/>
 ```
 
-In Vue 3, $attrs are passed the same way, `v-bind="{ ...field.options.attrs }"`, but then they are available using `$attrs` in template section of the Vue component.
+In Vue 3, `$attrs` are passed the same way, `v-bind="{ ...field.options.attrs }"`, but then they are available using `$attrs` in template section of the Vue component.
 
 ```html
 <input :placeholder="$attrs['placeholder']" />

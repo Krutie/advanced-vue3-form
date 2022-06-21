@@ -17,7 +17,14 @@
           v-model="formData[field.name]"
           v-bind="field.options.attrs"
           :field="{
-            ...pick(field, ['name', 'validation', 'type', 'text', 'options']),
+            ...pick(field, [
+              'name',
+              'validation',
+              'type',
+              'text',
+              'options',
+              'label',
+            ]),
           }"
           @change="
             updateField({

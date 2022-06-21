@@ -1,6 +1,6 @@
 import { instructions } from "./constants";
 
-export const form = [
+export const formConfig = [
   {
     type: "information",
     label: "",
@@ -147,7 +147,3 @@ export const form = [
     },
   },
 ];
-
-export default {
-  form,
-};

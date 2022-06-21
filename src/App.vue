@@ -9,7 +9,7 @@
 
 <script setup>
 import VueForm from "./components/VueForm";
-import { form as formConfig } from "./config/config";
+import { formConfig } from "./config/config";
 </script>
 <style>
 @import "./assets/styles/main.css";

@@ -6,26 +6,12 @@
         :activeField="formState.activeField"
         :next="formState.next"
       >
-        <FieldLabel
-          :props="{
-            key: key,
-            ...pick(field, ['label', 'name', 'validation']),
-          }"
-        />
+        <FieldLabel :props="getFieldLabelMeta(key, field)" />
         <Component
           :is="field.component"
           v-model="formData[field.name]"
           v-bind="field.options.attrs"
-          :field="{
-            ...pick(field, [
-              'name',
-              'validation',
-              'type',
-              'text',
-              'options',
-              'label',
-            ]),
-          }"
+          :field="getComponentFieldMeta(field)"
           @change="
             updateField({
               key: field.name,
@@ -59,7 +45,7 @@
 <script setup>
 import { provide } from "vue";
 import { useVuelidate } from "@vuelidate/core";
-// Pinia
+// Pinia store
 import { useLeadStore } from "../stores/LeadStore";
 // Composables
 import { useForm } from "../composables/useForm";
@@ -75,7 +61,7 @@ import { pick } from "../utilities/";
 const props = defineProps({
   formFields: {
     type: Array,
-    default: null,
+    default: () => [],
   },
 });
 
@@ -87,6 +73,16 @@ const { formData, formState, validateField, onSubmit, back } = useForm(
   props.formFields.length,
   v.value.$silentErrors.length
 );
+
+function getFieldLabelMeta(key, field) {
+  return { key, ...pick(field, ["label", "name", "validation"]) };
+}
+
+function getComponentFieldMeta(field) {
+  return {
+    ...pick(field, ["name", "validation", "type", "text", "options", "label"]),
+  };
+}
 
 // Provide
 provide("vueform", {

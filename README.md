@@ -1,7 +1,7 @@
 # Advanced Vue 3 Form 
 This is a revised version of distraction-free-form example that was created back in July 2019.
 
-#### This Typeform like form uses: Vue 3, Vuelidate and Animate.css
+#### This Typeform like form uses:
 - Vue 3, 
 - Composables, 
 - Provide/Inject, 
@@ -11,14 +11,17 @@ This is a revised version of distraction-free-form example that was created back
 ## Reference Links
 
 ### Vue 2:
-**[Legacy repo](https://github.com/Krutie/distraction-free-vue-form)**
 
-**[Legacy demo](http://distraction-free-vue-form.surge.sh/)**
+**[Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)**
+
+**[Github Repo](https://github.com/Krutie/distraction-free-vue-form)**
+
+**[Demo](http://distraction-free-vue-form.surge.sh/)**
 
 ### Vue 3:
 **[Vue 3 Demo](https://advanced-vue3-form.surge.sh/)**
 
-There won't be a separate Vue 3 article for this example. Scroll down to read more below.
+**See below to read more.**
 
 ## Full concept
 

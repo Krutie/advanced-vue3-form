@@ -17,9 +17,11 @@ export function useValidation(props) {
    */
   const validationMessage = computed(() => {
     if (props.type === "checkbox") {
-      return `Minimum ${props.validation.minLength} ${props.label} required.`;
+      return `Minimum ${props.validation.minLength} selections required.`;
     }
-    return `Minimum ${props.validation.minLength} characters required for ${props.label}.`;
+    return `Minimum ${props.validation.minLength} ${
+      props.validation.numeric ? "numbers" : "characters"
+    } required.`;
   });
   const rules = computed(() => ({
     /**
@@ -28,7 +30,7 @@ export function useValidation(props) {
      */
     selectedValue: {
       required: props.validation.required
-        ? helpers.withMessage(`${props.label} cannot be empty.`, required)
+        ? helpers.withMessage(`This field cannot be empty.`, required)
         : false,
       minLength: props.validation.minLength
         ? helpers.withMessage(

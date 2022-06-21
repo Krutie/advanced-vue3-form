@@ -60,7 +60,7 @@ export const form = [
   },
   {
     type: "textarea",
-    label: "Tell us a little bit about your kryptonite",
+    label: "Tell us a little bit about your kryptonite.",
     name: "weakness",
     buttonText: "Next...",
     options: {
@@ -79,7 +79,7 @@ export const form = [
     buttonText: "Next...",
     options: {
       attrs: {
-        placeholder: "Persistent",
+        placeholder: "One word to describe yourself...",
       },
     },
     validation: {
@@ -143,6 +143,7 @@ export const form = [
     validation: {
       required: true,
       numeric: true,
+      minLength: 10,
     },
   },
 ];

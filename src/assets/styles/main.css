@@ -258,3 +258,19 @@ textarea {
     padding-left: 30px !important;
   }
 }
+
+.instructions {
+  font-size: 0.7em;
+  opacity: 0.7;
+}
+
+.instructions svg {
+  font-size: 1.5em;
+  position: relative;
+  top: 4px;
+  opacity: 0.85;
+}
+
+.instructions span {
+  font-weight: bold;
+}

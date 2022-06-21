@@ -3,11 +3,7 @@ import { getComponent } from "./ComponentTypes";
 import { useLeadStore } from "../stores/LeadStore";
 
 const VueForm = (props) => {
-  let fieldObjects = props.formConfig.map((field) => {
-    let component = getComponent(field.type);
-    return { ...field, component };
-  });
-  // Set empty store for form data
+  // Setup empty store for form data
   const store = useLeadStore();
 
   props.formConfig.forEach((field) => {
@@ -23,10 +19,13 @@ const VueForm = (props) => {
     }
   });
 
-  // return the render function
-  return h(getComponent("formTemplate"), {
-    formFields: fieldObjects,
+  const formFields = props.formConfig.map((field) => {
+    let component = getComponent(field.type);
+    return { ...field, component };
   });
+
+  // return the render function
+  return h(getComponent("formTemplate"), { formFields });
 };
 
 export default VueForm;

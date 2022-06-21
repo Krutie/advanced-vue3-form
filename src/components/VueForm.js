@@ -16,6 +16,8 @@ const VueForm = (props) => {
         return (store.formData[field.name] = []);
       case "radio":
         return (store.formData[field.name] = "");
+      case "information":
+        break;
       default:
         return (store.formData[field.name] = "");
     }

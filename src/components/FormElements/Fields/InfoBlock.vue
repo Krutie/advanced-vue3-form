@@ -22,5 +22,5 @@ const props = defineProps({
   // },
 });
 
-useFormField(props.field);
+useFormField(props);
 </script>

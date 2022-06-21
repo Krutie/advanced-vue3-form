@@ -38,5 +38,5 @@ const props = defineProps({
   // },
 });
 
-const { selectedValue, vFocus } = useFormField(props.field);
+const { selectedValue, vFocus } = useFormField(props);
 </script>

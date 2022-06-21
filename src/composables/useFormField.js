@@ -8,7 +8,7 @@ export function useFormField(props) {
   /**
    * Validation Composable + Vuelidate
    */
-  const { rules } = useValidation(props);
+  const { rules } = useValidation(props.field);
   const v$ = useVuelidate(rules, { selectedValue });
 
   /**

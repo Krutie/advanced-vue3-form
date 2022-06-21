@@ -45,7 +45,7 @@ const props = defineProps({
   // },
 });
 
-const { selectedValue } = useFormField(props.field);
+const { selectedValue } = useFormField(props);
 </script>
 
 <style>

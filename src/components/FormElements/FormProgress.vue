@@ -1,9 +1,11 @@
 <template>
-  <div class="bar" />
+  <div class="bar" ref="bar" />
 </template>
 <script setup>
-import { inject, computed, watch } from "vue";
+import { ref, inject, computed, watch } from "vue";
 import gsap from "gsap";
+
+const bar = ref(null);
 
 /**
  * Inject
@@ -21,9 +23,8 @@ const percent = computed(() => {
  * Watch for changes in completion-percent over time
  */
 watch(percent, (newVal) => {
-  let el = document.getElementsByClassName("bar");
   let tl = gsap.timeline();
-  tl.to(el, {
+  tl.to(bar.value, {
     duration: 1,
     width: newVal + "%",
   });

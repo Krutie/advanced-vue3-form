@@ -2,10 +2,13 @@
 This is a revised version of `distraction-free-form` example that was created back in July 2019.
 
 #### This Typeform like form uses:
-- Vue 3, 
-- Composables, 
-- Provide/Inject, 
-- Vuelidate 
+- Vue 3 with
+    - Functional and single file components,
+    - Composables, 
+    - Provide/Inject,
+    - Transitions
+- Pinia,
+- Vuelidate and
 - Animate.css
 
 ## Reference Links

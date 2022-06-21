@@ -15,7 +15,6 @@ export function useValidation(props) {
    * props.validation.required
    * props.label
    */
-  console.log(props);
   const validationMessage = computed(() => {
     if (props.type === "checkbox") {
       return `Minimum ${props.validation.minLength} ${props.label} required.`;

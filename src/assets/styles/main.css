@@ -94,7 +94,7 @@ textarea {
   border: none;
   border-bottom: 2px solid var(--light) !important;
   height: 30px;
-  width: 75%;
+  width: 100%;
   font-size: 1.5em;
   border-radius: 2px;
   background-color: transparent;
@@ -106,9 +106,14 @@ textarea:focus {
   border-bottom: 2px solid var(--primary) !important;
 }
 
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: var(--fonts);
+  opacity: 0.25;
+}
+
 textarea {
   height: 120px;
-  width: 100%;
 }
 
 /* Form */

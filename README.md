@@ -145,3 +145,9 @@ In Vue 3, `$attrs` are passed the same way, `v-bind="{ ...field.options.attrs }"
 ```
 
 See working example in **[InputBox.vue](/src/components/FormElements/Fields/InputBox.vue)**
+
+## Todos: further improvement
+
+[ ] TypeScript
+[ ] CSS Refactoring (Windicss)
+[ ] XState

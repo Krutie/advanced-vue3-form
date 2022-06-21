@@ -6,7 +6,7 @@ export function useKeyboardNav(emits, formState) {
       emits("back");
     }
 
-    if (e.code === "ArrowRight" && !formState.value.isLastField) {
+    if (e.code === "Enter" && !formState.value.isLastField) {
       emits("next");
     }
   }

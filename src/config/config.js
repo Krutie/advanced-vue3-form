@@ -18,7 +18,7 @@ export const formConfig = [
     type: "information",
     label: "",
     name: "info",
-    text: `being a real-life superhero is not about physical strength, but about <strong>mental strength</strong>.`,
+    text: `...being a real-life superhero is not about physical strength, but about <strong>mental strength</strong>.`,
     buttonText: "Cool, let's do this!",
     options: {
       attrs: {},
@@ -30,7 +30,7 @@ export const formConfig = [
   {
     type: "radio",
     label: "Have you identified your superpowers?",
-    name: "hasSuperpowers",
+    name: "hasSuperpower",
     // buttonText: "What's next",
     options: {
       choices: ["Yes", "No", "Maybe"],
@@ -46,7 +46,7 @@ export const formConfig = [
     buttonText: "Okay, cool!",
     options: {
       choices: [
-        "Creative",
+        "Creativity",
         "Analytical",
         "Logical",
         "Strategic",

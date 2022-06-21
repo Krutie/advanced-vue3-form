@@ -1,7 +1,7 @@
 # Advanced Vue 3 Form 
 This is a revised version of `distraction-free-form` example that was created back in July 2019.
 
-#### This Typeform like form uses:
+#### This Typeform like form is built using:
 - Vue 3 with:
     - Render functions
     - Functional components 
@@ -38,9 +38,9 @@ However, there are some technical differences that follow Vue 3 conventions. Dia
 
 ## Render functions in Vue 3
 
-Function to create virtual node was available in `render()` function by default in Vue 2. This same function need to be imported from vue 3 now. Here's the signature of the new render function in Vue 3.
+Function to create virtual node was available in `render()` function by default in Vue 2. This same function needs to be imported from vue 3 now. Here's the signature of the new render function in Vue 3.
 
-See how the render function is used in **[VueForm.js](src/components/VueForm.js)** to load dynamic form field components as per defined in **[form configuration](/src/config/config.js)**.
+See how the render function is used in **[VueForm.js](src/components/VueForm.js)** to load dynamic form-field components as per defined in **[form configuration](/src/config/config.js)**.
 
 ![Render function syntax](/docs/images/Render-Function.png)
 

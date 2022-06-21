@@ -25,7 +25,7 @@ const props = defineProps({
   },
   modelValue: {
     type: Array,
-    default: null,
+    default: () => [],
   },
   // type: {
   //   type: String,

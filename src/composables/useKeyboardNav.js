@@ -1,20 +1,21 @@
 import { onMounted, onBeforeUnmount } from "vue";
 
 export function useKeyboardNav(emits, formState) {
-  function keyTest(e) {
+
+  function handleKeyPress(e) {
     if (e.code === "ArrowLeft" && !formState.value.isFirstField) {
       emits("back");
     }
 
-    if (e.code === "Enter" && !formState.value.isLastField) {
+    if (e.code === "ArrowRight" && !formState.value.isLastField) {
       emits("next");
     }
   }
 
   onMounted(() => {
-    window.addEventListener("keydown", keyTest);
+    window.addEventListener("keydown", handleKeyPress);
   });
   onBeforeUnmount(() => {
-    window.removeEventListener("keydown", keyTest);
+    window.removeEventListener("keydown", handleKeyPress);
   });
 }

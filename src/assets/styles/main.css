@@ -156,14 +156,14 @@ textarea {
   align-items: center;
 }
 
-.form-complete {
+.form-result {
   display: flex;
   align-items: center;
+  width: 90%;
 }
 
-.form-complete h1 {
-  text-align: center;
-  font-size: 1.5em;
+pre {
+  white-space: pre-wrap
 }
 
 .form-complete p {

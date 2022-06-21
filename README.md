@@ -2,8 +2,10 @@
 This is a revised version of `distraction-free-form` example that was created back in July 2019.
 
 #### This Typeform like form uses:
-- Vue 3 with
-    - Functional and single file components,
+- Vue 3 with:
+    - Render functions
+    - Functional components 
+    - Single file components,
     - Composables, 
     - Provide/Inject,
     - Transitions
@@ -11,30 +13,28 @@ This is a revised version of `distraction-free-form` example that was created ba
 - Vuelidate and
 - Animate.css
 
+## What's new
+
+The ideas described in **[Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)** article still applies here in this Vue 3 example. 
+
+However, there are some technical differences that follow new Vue 3 convetions as below. Diagrams seen in the article above have been updated as well.
+
 ## Reference Links
 
 ### Vue 2:
 
-**Article: [Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)**
-
-**[Github Repo](https://github.com/Krutie/distraction-free-vue-form)**
-
-**[Demo](http://distraction-free-vue-form.surge.sh/)**
+- **2019 Article with Vue 2: [Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)**
+- **[Github Repo](https://github.com/Krutie/distraction-free-vue-form)**
+- **[Demo](http://distraction-free-vue-form.surge.sh/)**
 
 ### Vue 3:
-**[Demo](https://advanced-vue3-form.surge.sh/)**
+- **[Demo](https://advanced-vue3-form.surge.sh/)**
 
 **See below to read more.**
 
 ## Full concept
 
 ![Project Image](/docs/images/Full-Concept.png)
-
-## What's new
-
-The ideas described in **[Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)** article still applies here in this Vue 3 example. 
-
-However, there are some technical differences that follow new Vue 3 convetions as below. Find all updated diagrams below as well.
 
 ## Render functions in Vue 3
 

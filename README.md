@@ -17,13 +17,13 @@ This is a revised version of `distraction-free-form` example that was created ba
 
 The ideas described in **[Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)** article still applies here in this Vue 3 example. 
 
-However, there are some technical differences that follow new Vue 3 convetions as below. Diagrams seen in the article above have been updated as well.
+However, there are some technical differences that follow Vue 3 convetions. Diagrams seen in the article above have been updated as well.
 
 ## Reference Links
 
 ### Vue 2:
 
-- **2019 Article with Vue 2: [Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)**
+- **2019 Article: [Building an Interactive and Distraction-free Form with Vue](https://medium.com/vue-mastery/building-an-interactive-and-distraction-free-form-with-vue-bfe23907e981)**
 - **[Github Repo](https://github.com/Krutie/distraction-free-vue-form)**
 - **[Demo](http://distraction-free-vue-form.surge.sh/)**
 
@@ -34,13 +34,15 @@ However, there are some technical differences that follow new Vue 3 convetions a
 
 ## Full concept
 
-![Project Image](/docs/images/Full-Concept.png)
+![Full Concept](/docs/images/Full-Concept.png)
 
 ## Render functions in Vue 3
 
 Function to create virtual node was available in `render()` function by default in Vue 2. This same function need to be imported from vue 3 now. Here's the signature of the new render function in Vue 3.
 
-![Project Image](/docs/images/Render-Function.png)
+See how the render function is used in **[VueForm.js](src/components/VueForm.js)** to load dynamic form field components as per defined in **[form configuration](/src/config/config.js)**.
+
+![Render function syntax](/docs/images/Render-Function.png)
 
 ## Functional components in Vue 3
 
@@ -62,15 +64,18 @@ function MyComponent(props, { slots, emit, attrs }) {
     return () => h(Transition, props, slots)
 }
 ```
+You can also see how Transition component is rendered through render function.
 
-Previously, `<Transition> </Transition>` component could be rendered by adding a string, like: `return h("transition", data, context.children)`.
-In Vue, we need to import `Transition` component from `vue` to pass into render function `h()`.
+Previously, we rendered `<Transition>` component by adding it as a string, like: `return h("transition", data, context.children)`.
+In Vue 3, we need to import an actual `Transition` component from `vue` and then pass it into render function `h()`.
 
 ## From mixins to composables
 
 Back in Vue 2 example, we used mixins to share the formState and formData. That same mixin is now converted into `useForm` composable, that provides formState, formData and other helper methods to navigate individual fields within the form. 
 
-![Project Image](/docs/images/FormMixins-Methods.png)
+See all four **[composables](/src/composables)**  used in this example.
+
+![useForm Composable](/docs/images/FormMixins-Methods.png)
 
 ## From Vuex to Pinia
 
@@ -78,23 +83,34 @@ Back in Vue 2 example, we used Vuex store to create empty store based on form co
 
 ```js
 // src/components/VueForm.js
-  props.formConfig.forEach((field) => {
-    switch (field.type) {
-      case "checkbox":
-        return (store.formData[field.name] = []);
-      case "radio":
-        return (store.formData[field.name] = "");
-      default:
-        return (store.formData[field.name] = "");
-    }
-  });
+
+// Set empty store for form data
+const store = useLeadStore();
+
+props.formConfig.forEach((field) => {
+switch (field.type) {
+    case "checkbox":
+    return (store.formData[field.name] = []);
+    case "radio":
+    return (store.formData[field.name] = "");
+    case "information":
+    break;
+    default:
+    return (store.formData[field.name] = "");
+}
+});
 ```
+
+As soon as we load the form, we have this 👆 empty store created for us to store user entered values. The **[pinia store](/src/stores/LeadStore.js)** looks a lot simpler now as well.
+
+![Pinia](/docs/images/Pinia.png)
+
 
 ## Vuelidate and 3 composables
 
 Unlike previous example, Vuelidate is used for form validation. There are two custom composables, useFormField and useValidation along with useVulidate composable that's provided by Vuelidate - all three of these composables take care of individual field validation before we can move onto the next step in the form.
 
-![Project Image](/docs/images/Form-Template.png)
+![Vuelidate and Composables](/docs/images/Form-Template.png)
 
 ## Provide Inject
 
@@ -117,8 +133,10 @@ Back in Vue 2, $attrs were applied to component by simply using `v-bind="{ ...fi
 <Component v-model="formData[field.name]" :is="field.component" v-bind="{ ...field.options.attrs }"/>
 ```
 
-In Vue 3, $attrs are passed the same way, `v-bind="{ ...field.options.attrs }"`, but then they are available using `$attrs`.
+In Vue 3, $attrs are passed the same way, `v-bind="{ ...field.options.attrs }"`, but then they are available using `$attrs` in template section of the Vue component.
 
 ```html
 <input :placeholder="$attrs['placeholder']" />
 ```
+
+See working example in **[InputBox.vue](/src/components/FormElements/Fields/InputBox.vue)**

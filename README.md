@@ -148,6 +148,6 @@ See working example in **[InputBox.vue](/src/components/FormElements/Fields/Inpu
 
 ## Todos: further improvement
 
-[ ] TypeScript
-[ ] CSS Refactoring (Windicss)
-[ ] XState
+- [ ] TypeScript
+- [ ] CSS Refactoring (Windicss)
+- [ ] XState
